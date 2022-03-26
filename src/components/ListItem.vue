@@ -25,20 +25,22 @@
   </ul>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { NewsItem } from '@/api';
+import Vue, { PropType } from 'vue'
+export default Vue.extend({
   props: {
     items: {
-      type: Array,
+      type: Array as PropType<NewsItem[]>,
       required: true,
     },
   },
   computed: {
-    // listItems() {
-    //   return this.$store.getters.fetchedList;
-    // }
-  }
-}
+    listItems(): any {
+      return this.$store.getters.fetchedList;
+    }
+  },
+})
 </script>
 
 <style scoped>
