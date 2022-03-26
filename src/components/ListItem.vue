@@ -1,6 +1,6 @@
 <template>
   <ul class="news-list">
-    <li v-for="news in listItems" :key="news.id" class="post">
+    <li v-for="news in items" :key="news.id" class="post">
       <div class="points">
         {{ news.points || 0 }}
       </div>
@@ -27,10 +27,16 @@
 
 <script>
 export default {
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
+  },
   computed: {
-    listItems() {
-      return this.$store.getters.fetchedList;
-    }
+    // listItems() {
+    //   return this.$store.getters.fetchedList;
+    // }
   }
 }
 </script>
