@@ -21,6 +21,7 @@ export const actions = {
   ) {
     const { data } = await fetchNews();
     context.commit(MutationTypes.SET_NEWS, data);
+    return data;
   },
 };
 
