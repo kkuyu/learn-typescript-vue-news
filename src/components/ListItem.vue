@@ -40,11 +40,11 @@ export default Vue.extend({
       return news.time_ago.concat(`, ${new Date().getFullYear()}`);
     },
   },
-  computed: {
-    listItems(): any {
-      return this.$store.getters.fetchedList;
-    }
-  },
+  // computed: {
+  //   listItems(): any {
+  //     return this.$store.getters.fetchedList;
+  //   }
+  // },
 })
 </script>
 
