@@ -1,109 +1,109 @@
-import Vue from 'vue';
-import VueRouter, { NavigationGuardNext, Route } from 'vue-router';
-import { ItemView, UserView } from '../views';
-import createListView from '../views/CreateListView';
-import bus from '../utils/bus';
-import store from '../store/index';
+import Vue from "vue";
+import VueRouter, { NavigationGuardNext, Route } from "vue-router";
+import { ItemView, UserView } from "../views";
+import createListView from "../views/CreateListView";
+import bus from "../utils/bus";
+import store from "../store/index";
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      redirect: '/news' 
+      path: "/",
+      redirect: "/news",
     },
     {
-      path: '/news',
-      name: 'news',
-      component: createListView('NewsView'),
+      path: "/news",
+      name: "news",
+      component: createListView("NewsView"),
       async beforeEnter(
         routeTo: Route,
         routeFrom: Route,
         next: NavigationGuardNext<Vue>
       ) {
-        bus.$emit('on:progress');
+        bus.$emit("on:progress");
         try {
-          await store.dispatch('FETCH_LIST', routeTo.name);
+          await store.dispatch("FETCH_LIST", routeTo.name);
           next();
         } catch (error) {
-          new Error('failed to fetch news items');
+          new Error("failed to fetch news items");
           // next('/error');
         }
       },
     },
     {
-      path: '/ask',
-      name: 'ask',
-      component: createListView('AskView'),
+      path: "/ask",
+      name: "ask",
+      component: createListView("AskView"),
       async beforeEnter(
         routeTo: Route,
         routeFrom: Route,
         next: NavigationGuardNext<Vue>
       ) {
-        bus.$emit('on:progress');
+        bus.$emit("on:progress");
         try {
-          await store.dispatch('FETCH_LIST', routeTo.name);
+          await store.dispatch("FETCH_LIST", routeTo.name);
           next();
         } catch (error) {
-          new Error('failed to fetch news items')
+          new Error("failed to fetch news items");
         }
       },
     },
     {
-      path: '/jobs',
-      name: 'jobs',
-      component: createListView('JobsView'),
+      path: "/jobs",
+      name: "jobs",
+      component: createListView("JobsView"),
       async beforeEnter(
         routeTo: Route,
         routeFrom: Route,
         next: NavigationGuardNext<Vue>
       ) {
-        bus.$emit('on:progress');
+        bus.$emit("on:progress");
         try {
-          await store.dispatch('FETCH_LIST', routeTo.name);
+          await store.dispatch("FETCH_LIST", routeTo.name);
           next();
         } catch (error) {
-          new Error('failed to fetch news items')
+          new Error("failed to fetch news items");
         }
       },
     },
     {
-      path: '/item/:id',
+      path: "/item/:id",
       component: ItemView,
       async beforeEnter(
         routeTo: Route,
         routeFrom: Route,
         next: NavigationGuardNext<Vue>
       ) {
-        bus.$emit('on:progress');
+        bus.$emit("on:progress");
         try {
           const itemId = routeTo.params.id;
-          await store.dispatch('FETCH_ITEM', itemId)
+          await store.dispatch("FETCH_ITEM", itemId);
           next();
         } catch (error) {
-          new Error('failed to fetch item details')
+          new Error("failed to fetch item details");
         }
       },
     },
     {
-      path: '/user/:id',
+      path: "/user/:id",
       component: UserView,
       async beforeEnter(
         routeTo: Route,
         routeFrom: Route,
         next: NavigationGuardNext<Vue>
       ) {
-        bus.$emit('on:progress');
+        bus.$emit("on:progress");
         try {
           const itemId = routeTo.params.id;
-          await store.dispatch('FETCH_USER', itemId)
+          await store.dispatch("FETCH_USER", itemId);
           next();
         } catch (error) {
-          new Error('failed to fetch user profile')
+          new Error("failed to fetch user profile");
         }
       },
-    }
-  ]
-})
+    },
+  ],
+});

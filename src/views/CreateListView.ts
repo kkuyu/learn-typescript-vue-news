@@ -1,12 +1,12 @@
-import ListView from './ListView.vue';
-import bus from '../utils/bus';
-import { CreateElement } from 'vue';
+import ListView from "./ListView.vue";
+import bus from "../utils/bus";
+import { CreateElement } from "vue";
 
-export default function createListView(name: string) {
+export default function createListView(name: string): any {
   return {
     name,
     mounted() {
-      bus.$emit('off:progress');
+      bus.$emit("off:progress");
     },
     render(h: CreateElement) {
       return h(ListView);

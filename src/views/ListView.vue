@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 // import { fetchList, NewsItem } from '@/api';
-import ListItem from '../components/ListItem.vue';
+import ListItem from "../components/ListItem.vue";
 
 export default Vue.extend({
   components: {
-    ListItem
+    ListItem,
   },
   // data () {
   //   return {
@@ -27,9 +27,7 @@ export default Vue.extend({
   // created () {
   //   this.fetchListItems();
   // }
-})
+});
 </script>
 
-<style>
-
-</style>
+<style></style>
