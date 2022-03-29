@@ -24,9 +24,9 @@ export const getters = {
   userTimeAgo(state: RootState): string {
     return state.item.time_ago;
   },
-  contentPoints(state: RootState): number {
-    return state.item.points;
-  },
+  // contentPoints(state: RootState): number {
+  //   return state.item.points;
+  // },
 };
 
 export type Getters = typeof getters;

@@ -1,4 +1,4 @@
-import { Action, CommitOptions, DispatchOptions, Store } from "vuex";
+import { CommitOptions, DispatchOptions, Store } from "vuex";
 import { Actions } from "./actions";
 import { Getters } from "./getters";
 import { Mutations } from "./mutations";
@@ -33,4 +33,3 @@ export type MyStore = Omit<
   MyMutations &
   MyActions &
   MyGetters;
- 

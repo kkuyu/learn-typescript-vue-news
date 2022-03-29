@@ -1,11 +1,4 @@
-import {
-  AskItem,
-  Item,
-  JobsItem,
-  ListItem,
-  NewsItem,
-  UserItem,
-} from "@/api";
+import { AskItem, Item, JobsItem, ListItem, NewsItem, UserItem } from "@/api";
 
 export const state = {
   news: [] as NewsItem[],

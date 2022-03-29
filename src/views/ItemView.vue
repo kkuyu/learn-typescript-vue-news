@@ -17,16 +17,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
 import { mapGetters } from "vuex";
 import UserProfile from "../components/UserProfile.vue";
 import bus from "../utils/bus";
 
-export default {
+export default Vue.extend({
   components: {
     UserProfile,
   },
-  created() {
+  created(): void {
     bus.$emit("off:progress");
   },
   computed: {
@@ -39,9 +40,8 @@ export default {
       "contentPoints",
     ]),
   },
-};
+});
 </script>
-
 <style scoped>
 .home {
   padding: 0 1.8rem;
