@@ -7,15 +7,25 @@
       <div>
         <p class="news-title">
           <template v-if="news.domain">
-            <a :href="news.url">{{ news.title }}</a><small class="link-text" v-if="news.domain">({{ news.domain }})</small>
+            <a :href="news.url">{{ news.title }}</a>
+            <small class="link-text" v-if="news.domain">
+              ({{ news.domain }})
+            </small>
           </template>
           <template v-else>
-            <router-link :to="`/item/${news.id}`">{{ news.title }}</router-link><small><a class="link-text" :href="news.domain" v-if="news.domain">({{ news.domain }})</a></small>
+            <router-link :to="`/item/${news.id}`">{{ news.title }}</router-link>
+            <small>
+              <a class="link-text" :href="news.domain" v-if="news.domain">
+                ({{ news.domain }})
+              </a>
+            </small>
           </template>
         </p>
         <small v-if="news.user" class="link-text">
           by
-          <router-link :to="`/user/${news.user}`" class="link-text">{{ news.user }}</router-link>
+          <router-link :to="`/user/${news.user}`" class="link-text">
+            {{ news.user }}
+          </router-link>
         </small>
         <small v-if="news.time_ago" class="link-text">
           {{ timeAgo(news) }}
@@ -26,15 +36,16 @@
 </template>
 
 <script lang="ts">
-import { ListItem, NewsItem } from '@/api';
-import Vue, { PropType } from 'vue'
+import { ListItem, NewsItem } from "@/api";
+import Vue, { PropType } from "vue";
+
 export default Vue.extend({
-  // props: {
-  //   items: {
-  //     type: Array as PropType<NewsItem[]>,
-  //     required: true,
-  //   },
-  // },
+  props: {
+    items: {
+      type: Array as PropType<NewsItem[]>,
+      required: false,
+    },
+  },
   methods: {
     timeAgo(news: NewsItem): string {
       return news.time_ago.concat(`, ${new Date().getFullYear()}`);
@@ -43,9 +54,9 @@ export default Vue.extend({
   computed: {
     listItems(): ListItem[] {
       return this.$store.getters.fetchedList;
-    }
+    },
   },
-})
+});
 </script>
 
 <style scoped>
